@@ -32,12 +32,12 @@ public class MyHwProducer {
         prop.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
 
         KafkaProducer<String,Customer>  kafkaProducer = new KafkaProducer<String, Customer>(prop);
-        String topic="customer-avro-2";
+        String topic="customer-avro-4";
 
         Customer customer = Customer.newBuilder()
                             .setFirstName("john")
                             .setLastName("wick")
-                            .setHeight(176)
+                            .setHeight(179)
                             .build();
         ProducerRecord<String,Customer> producerRecord = new ProducerRecord<String,Customer>(
                 topic,customer

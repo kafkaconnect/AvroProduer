@@ -1,6 +1,7 @@
 package com.app.producer;
 
 //import com.example.Customer;
+import com.example.Customer;
 import com.hortonworks.registries.schemaregistry.client.SchemaRegistryClient;
 import com.hortonworks.registries.schemaregistry.serdes.avro.kafka.KafkaAvroDeserializer;
 import org.apache.avro.generic.GenericRecord;
@@ -45,24 +46,24 @@ public class MyHwConsumer {
 
         //KafkaConsumer<String,Customer> consumer = new KafkaConsumer<String, Customer>(prop);
         KafkaConsumer<String,Object> consumer = new KafkaConsumer<String, Object>(prop);
-        String topic="customer-avro-2";
+        String topic="customer-avro-4";
 
         consumer.subscribe(Collections.singleton(topic));
         System.out.println("waiting for data....");
-/*
+
         while(true){
             //ConsumerRecords<String,Customer> records = consumer.poll(   500);
             ConsumerRecords<String,Object> records = consumer.poll(   500);
             for(ConsumerRecord<String,Object> record:records){
-                Customer customer = (Customer)record.value();
-                GenericRecord customer_generic = (GenericRecord)record;
-                customer_generic.getSchema();
-                System.out.println(customer);
-                *//*System.out.println(customer.getFirstName() + "," +
-                        customer.getLastName()+","+customer.getHeight());*//*
+                //Customer customer = (Customer)record.value();
+                //GenericRecord customer_generic = (GenericRecord)record;
+                //customer_generic.getSchema();
+                System.out.println(record.value());
+                /**System.out.println(customer.getFirstName() + "," +
+                        customer.getLastName()+","+customer.getHeight());**/
             }
             consumer.commitAsync();
-        }*/
+        }
       // consumer.close();
 
     }
